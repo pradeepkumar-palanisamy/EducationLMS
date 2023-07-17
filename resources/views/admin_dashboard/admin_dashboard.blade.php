@@ -9,53 +9,87 @@
             <div class="col-lg-3 col-sm-6">
                 <div class="card gradient-1">
                     <div class="card-body">
-                        <h3 class="card-title text-white">Products Sold</h3>
+                        <h3 class="card-title text-white">Total Subjects</h3>
                         <div class="d-inline-block">
-                            <h2 class="text-white">4565</h2>
-                            <p class="text-white mb-0">Jan - March 2019</p>
+                            <h2 class="text-white">{{ $subject }}</h2>
                         </div>
-                        <span class="float-right display-5 opacity-5"><i class="fa fa-shopping-cart"></i></span>
+                        <span class="float-right display-5 opacity-5"><i class="fa fa-bookmark" aria-hidden="true"></i></span>
+                    </div>
+                    <div class="card-footer bg-transparent">
+                        <div class="text-center">
+                        <a href="{{ URL('admin-subject') }}" class="text-white mb-0">More Info</a> &nbsp;<i class="fa fa-arrow-right text-white mb-0" aria-hidden="true"></i>
+                        </div>
                     </div>
                 </div>
             </div>
+
             <div class="col-lg-3 col-sm-6">
                 <div class="card gradient-2">
                     <div class="card-body">
-                        <h3 class="card-title text-white">Net Profit</h3>
+                        <h3 class="card-title text-white">Total Units</h3>
                         <div class="d-inline-block">
-                            <h2 class="text-white">$ 8541</h2>
-                            <p class="text-white mb-0">Jan - March 2019</p>
+                            <h2 class="text-white">{{ $unit }}</h2>
                         </div>
-                        <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>
+                        <span class="float-right display-5 opacity-5"><i class="fa fa-bookmark" aria-hidden="true"></i></span>
+                    </div>
+                    <div class="card-footer bg-transparent">
+                        <div class="text-center">
+                        <a href="{{ URL('admin-unit') }}" class="text-white mb-0">More Info</a> &nbsp;<i class="fa fa-arrow-right text-white mb-0" aria-hidden="true"></i>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6">
                 <div class="card gradient-3">
                     <div class="card-body">
-                        <h3 class="card-title text-white">New Customers</h3>
+                        <h3 class="card-title text-white">Toatl Chapters</h3>
                         <div class="d-inline-block">
-                            <h2 class="text-white">4565</h2>
-                            <p class="text-white mb-0">Jan - March 2019</p>
+                            <h2 class="text-white">{{ $chapter }}</h2>
                         </div>
-                        <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
+                        <span class="float-right display-5 opacity-5"><i class="fa fa-bookmark" aria-hidden="true"></i></span>
+                    </div>
+                    <div class="card-footer bg-transparent">
+                        <div class="text-center">
+                        <a href="{{ URL('admin-chapter') }}" class="text-white mb-0">More Info</a> &nbsp;<i class="fa fa-arrow-right text-white mb-0" aria-hidden="true"></i>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6">
                 <div class="card gradient-4">
                     <div class="card-body">
-                        <h3 class="card-title text-white">Customer Satisfaction</h3>
+                        <h3 class="card-title text-white">Total Videos</h3>
                         <div class="d-inline-block">
-                            <h2 class="text-white">99%</h2>
-                            <p class="text-white mb-0">Jan - March 2019</p>
+                            <h2 class="text-white">{{ $video }}</h2>
                         </div>
-                        <span class="float-right display-5 opacity-5"><i class="fa fa-heart"></i></span>
+                        <span class="float-right display-5 opacity-5"><i class="fa fa-bookmark" aria-hidden="true"></i></span>
+                    </div>
+                    <div class="card-footer bg-transparent">
+                        <div class="text-center">
+                        <a href="{{ URL('admin-content') }}" class="text-white mb-0">More Info</a> &nbsp;<i class="fa fa-arrow-right text-white mb-0" aria-hidden="true"></i>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-6">
+            <div class="col-lg-3 col-sm-6">
+                <div class="card gradient-4">
+                    <div class="card-body">
+                        <h3 class="card-title text-white">Total Users</h3>
+                        <div class="d-inline-block">
+                            <h2 class="text-white">{{ $user }}</h2>
+                        </div>
+                        <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
+                    </div>
+                    <div class="card-footer bg-transparent">
+                        <div class="text-center">
+                        <a href="{{ URL('all-user') }}" class="text-white mb-0">More Info</a> &nbsp;<i class="fa fa-arrow-right text-white mb-0" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- <div class="col-lg-6">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Dismissing</h4>
@@ -72,7 +106,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>

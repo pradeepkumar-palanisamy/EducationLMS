@@ -5,7 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\Admin;
+use App\Models\Admin\Chapter;
+use App\Models\Admin\Content;
+use App\Models\Admin\Subject;
+use App\Models\Admin\Unit;
 use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class Admin_Authentication_Controller extends Controller
 {
@@ -15,8 +20,12 @@ class Admin_Authentication_Controller extends Controller
     }
 
     public function admin_dashboard(){
-
-        return view('admin_dashboard.admin_dashboard');
+                $subject = Subject::count();
+                $unit = Unit::count();
+                $chapter = Chapter::count();
+                $video = Content::count();
+                $user = User::count();
+        return view('admin_dashboard.admin_dashboard',["subject"=>$subject,"unit"=>$unit,"chapter"=>$chapter,"video"=>$video,"user"=>$user]);
     }
 
     public function admin_post_login(Request $request)

@@ -23,7 +23,6 @@
                             <table class="table table-striped table-bordered zero-configuration">
                                 <thead>
                                     <tr>
-                                        <th>SI.No</th>
                                         <th>Chapter Name</th>
                                         <th>Chapter Description</th>
                                         <th>Subject Name</th>
@@ -49,10 +48,10 @@
                                             @else
                                             <span class="label label-pill label-danger">InActive</span></td>
                                             @endif
-                                            
+
                                         <td>
-                                            <a href="{{ url('edit-chapter') }}/{{ $chapters->chapter_slug }}"><button class="btn btn-warning">Edit</button></a><br>   
-                                            <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal{{ $chapters->id }}">Delete</button>
+                                            <a href="{{ url('edit-chapter') }}/{{ $chapters->chapter_slug }}"><button class="btn mb-1 btn-warning btn-sm">Edit</button></a><br>
+                                            <button class="btn mb-1 btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal{{ $chapters->id }}">Delete</button>
                                         </td>
                                     </tr>
 
@@ -81,8 +80,8 @@
 </div>
 </div>
                                     @endforeach
-                                    
-                            
+
+
                                 </tbody>
                             </table>
                         </div>

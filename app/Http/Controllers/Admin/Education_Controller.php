@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Chapter;
 use App\Models\Admin\Subject;
 use App\Models\Admin\Unit;
 use Illuminate\Http\Request;
@@ -13,17 +14,17 @@ class Education_Controller extends Controller
 {
     public function a_subject(){
             $subject = Subject::get();
-            
+
         return view('admin_education.a_subject',["subject"=>$subject]);
     }
 
     public function a_unit(){
-            $subject = Subject::get();
-            $unit = DB::table('geo_unit')
-            ->join('geo_subject', 'geo_unit.subject_id', '=', 'geo_subject.id')
-            ->select('geo_unit.id', 'geo_unit.*', 'geo_subject.id as subject_id', 'geo_subject.subject_name')
-            ->get();
-        
+                $subject = Subject::get();
+                $unit = DB::table('geo_unit')
+                    ->join('geo_subject', 'geo_unit.subject_id', '=', 'geo_subject.id')
+                    ->select('geo_unit.id', 'geo_unit.*', 'geo_subject.id as subject_id', 'geo_subject.subject_name')
+                    ->get();
+
         return view('admin_education.a_unit',["subject"=>$subject,"unit"=>$unit]);
     }
 
@@ -36,14 +37,25 @@ class Education_Controller extends Controller
                 ->select('geo_subject.*', 'geo_unit.*', 'geo_chapters.*')
                 ->orderBy('geo_chapters.created_at', 'desc')
                 ->get();
-    
-                    
+
+
         return view('admin_education.a_chapter',["subject"=>$subject,"unit"=>$unit,"chapter"=>$chapter]);
     }
 
     public function a_content(){
 
-        return view('admin_education.a_content');
+                $subject = Subject::get();
+                $unit = Unit::get();
+                $chapter = Chapter::get();
+
+                $video = DB::table('geo_content')
+                ->join('geo_chapters','geo_content.chapter_id','=','geo_chapters.id')
+                ->join('geo_unit','geo_content.unit_id','=','geo_unit.id')
+                ->join('geo_subject','geo_content.subject_id','=','geo_subject.id')
+                ->select('geo_subject.*','geo_unit.*','geo_chapters.*','geo_content.*')
+                ->get();
+
+        return view('admin_education.a_content',["subject"=>$subject,"unit"=>$unit,"chapter"=>$chapter,"video"=>$video]);
     }
 
     public function edit_subject($slug){
@@ -86,7 +98,7 @@ class Education_Controller extends Controller
     }
 
     public function delete_subject(Request $request)
-{           
+{
         $id = $request->id;
         $subject = Subject::where('id', $id)->first();
 

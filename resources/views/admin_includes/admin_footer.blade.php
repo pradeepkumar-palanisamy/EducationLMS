@@ -1,7 +1,7 @@
 
         <div class="footer">
             <div class="copyright">
-                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
+                <p>Copyright &copy; Designed & Developed by <a href="https://pgsoftwares.com">PG SOFTWARES</a> 2023</p>
             </div>
         </div>
 
@@ -26,38 +26,38 @@
                 timeOut: 2000
             });
         @endif
-    
+
         @if (session('warning'))
             toastr.warning('{{ session('warning') }}', {
                 timeOut: 2000
             });
         @endif
-    
+
         @if (session('fail'))
             toastr.error('{{ session('fail') }}', {
                 timeOut: 2000
             });
         @endif
-    
+
         @if (session('primary'))
             toastr.primary('{{ session('primary') }}', {
                 timeOut: 2000
             });
         @endif
-    
+
         @if (session('message'))
             toastr.message('{{ session('message') }}', {
                 timeOut: 2000
             });
         @endif
-    
+
         @if (session('info'))
             toastr.info('{{ session('info') }}', {
                 timeOut: 2000
             });
         @endif
     </script>
-    
+
 
 </body>
 

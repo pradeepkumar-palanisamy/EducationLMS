@@ -34,17 +34,18 @@ class ChapterController extends Controller
     public function post_edit_chapter(Request $request)
     {
         $id = $request->id;
-    
+
         $updatedata = [
             'subject_id' => $request->subject_id,
             'unit_id' => $request->unit_id,
             'chapter_name' => $request->chapter_name,
             'chapter_slug' => Str::slug($request->chapter_name),
             'chapter_desc' => $request->chapter_desc,
+            'chapter_status' =>$request->chapter_status
         ];
-    
+
         $update = Chapter::where('id', $id)->update($updatedata);
-    
+
         if ($update) {
             return redirect('admin-chapter')->with('success', 'The Chapter has been updated successfully');
         } else {
@@ -78,5 +79,5 @@ class ChapterController extends Controller
     }
 }
 
-    
+
 }

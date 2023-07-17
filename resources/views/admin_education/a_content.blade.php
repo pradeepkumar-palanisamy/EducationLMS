@@ -114,21 +114,23 @@ section .details span{
     <div class="row page-titles mx-0">
         <div class="col p-md-0">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{ URL::TO('admin-dashboard') }}">Dashboard</a></li>
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
             </ol>
         </div>
     </div>
+    <form action="{{ route('post_add_content') }}" method="post">
+        @csrf
     <div class="container-fluid">
         <div class="row">
             <div class="col-4">
                 <div class="card">
                     <div class="card-body">
                         <label for="select1"><b>Subject</b></label>
-                        <select class="form-control" id="select1">
-                            <option value="1">Option 1</option>
-                            <option value="2">Option 2</option>
-                            <option value="3">Option 3</option>
+                        <select class="form-control" name="subject_id" id="select1" required>
+                            @foreach ($subject as $subjects)
+                            <option value="{{ $subjects->id }}">{{ $subjects->subject_name }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -137,10 +139,10 @@ section .details span{
                 <div class="card">
                     <div class="card-body">
                         <label for="select2"> <b>Unit</b></label>
-                        <select class="form-control" id="select2">
-                            <option value="1">Option 1</option>
-                            <option value="2">Option 2</option>
-                            <option value="3">Option 3</option>
+                        <select class="form-control" name="unit_id" id="select2" required>
+                            @foreach ($unit as $units )
+                            <option value="{{ $units->id }}">{{ $units->unit_name }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -149,27 +151,70 @@ section .details span{
                 <div class="card">
                     <div class="card-body">
                         <label for="select3"> <b>Chapter</b></label>
-                        <select class="form-control" id="select3">
-                            <option value="1">Option 1</option>
-                            <option value="2">Option 2</option>
-                            <option value="3">Option 3</option>
+                        <select class="form-control" name="chapter_id" id="select3" required>
+                            @foreach ($chapter as $chapters )
+                            <option value="{{ $chapters->id }}">{{ $chapters->chapter_name }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="wrapper">
-            <header>Upload File</header>
-            <form action="#">
-              <input class="file-input" type="file" name="file" hidden>
-              <i class="fas fa-cloud-upload-alt"></i>
-              <p>Browse File to Upload</p>
-            </form>
-            <section class="progress-area"></section>
-            <section class="uploaded-area"></section>
-          </div>
-        
-        
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-center">
+                       <h4 style="color: #6990F2"><b>Please enter your video ID</b></h4>
+                       <form action="">
+                            <input type="text" name="content_url" class="form-control" required >
+                            <br>
+                            <button type="submit" class="btn btn-success">submit video</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+            <hr>
+            @if ($video->isEmpty())
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <img src="https://t4.ftcdn.net/jpg/04/72/00/67/360_F_472006716_sXPLGVS29LPVVkxkOmJylPXVfwdB4F3F.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @else
+        <h4>Uploaded Youtube videos:</h4>
+            <div class="container">
+                <div class="row">
+                        @foreach ($video as $videos )
+                        <div class="col-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <iframe width="100%" height="225" src="https://www.youtube.com/embed/{{ $videos->content_url }}" frameborder="0" allowfullscreen></iframe>
+                                    <div class="justify-content-left">
+                                        <h6><b>Subject Name:</b> &nbsp;{{ $videos->subject_name }}</h6>
+                                        <h6><b>Unit Name:</b>&nbsp;{{ $videos->unit_name }}</h6>
+                                        <h6><b>Chapter Name:</b>&nbsp;{{ $videos->chapter_name }}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+
+
+                </div>
+            </div>
+
+
+
+
+        @endif
+
+
     </div>
 </div>
 
